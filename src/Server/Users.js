@@ -8,15 +8,4 @@ const Users = [
     {username:"Lion", nickname:"Lio", password:"Roar99$", image: img3}
 ];
 
-
-/*NOT WORKING!*/
-function GetUser({pwd, username}){
-    Users.forEach((user) => {
-        if(user.username.value === username && user.password.value === pwd){
-            return user;
-        }
-    });
-    return null;
-}
-
-export default GetUser;
+export default Users;

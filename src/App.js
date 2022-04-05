@@ -1,9 +1,8 @@
 import './App.css';
-import LoginForm from './Components/LoginForms/LoginForm'
+import LoginForm from './Components/LoginForms/LoginForm';
 import RegisterForm from "./Components/LoginForms/RegisterForm";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import HomePage from "./Components/HomePage/HomePage";
-
 
 function App() {
     return (
