@@ -2,24 +2,30 @@ import './LoginForm.css'
 import TextInput from "../LoginInputs/TextInput";
 import PasswordInput from "../LoginInputs/PasswordInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import GetUser from "../../Server/GetUser";
 import Alert from "../Alert/Alert";
+import {useContext} from "react";
+import {UserContext} from "../../UserContext";
 
 function LoginForm() {
+    const {user,setUser} = useContext(UserContext);
+    if (user) { // check if user already logged in
+        return <Navigate to="/homepage"/>;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const pwd = document.getElementById('password').value;
-        const user = GetUser(pwd, username);
-        if (user){
-            console.log(user);
-            console.log("hello "+ user.username);
+        const guest = GetUser(pwd, username);
+        if (guest){
+            setUser(guest);
+            //return <Navigate to="/HomePage"/>;
         } else {
             Alert("User Name or Password incorrect!", "danger");
         }
-    }
+    };
 
     return (
         <div className="form-box">
@@ -34,7 +40,6 @@ function LoginForm() {
                     Not registered? <Link to="/register">click here</Link> to register.
                 </div>
         </div>
-
     );
 }
 
