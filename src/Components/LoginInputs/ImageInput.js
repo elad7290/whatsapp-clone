@@ -10,7 +10,7 @@ function ImageInput(props){
         <>
             <div className="input-box">
                 <i className="fa fa-camera" />
-                <input className="form-control form-control-sm" type="file" accept="image/*" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved}/>
+                <input className="form-control form-control-sm loginInput" type="file" accept="image/*" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved}/>
                 <div id="err-msg">{errorMessage}</div>
             </div>
         </>

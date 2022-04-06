@@ -24,7 +24,7 @@ function PasswordInput(props) {
     return (
         <div className="input-box">
             <i className={props.icon}/>
-            <input type="password" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved}/>
+            <input type="password" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved} className="loginInput"/>
             <span className="eye" onClick={hideShow}>
                 <i className="fa fa-eye show" id={"show-" + props.id}/>
                 <i className="fa fa-eye-slash hide" id={"hide-" + props.id}/>

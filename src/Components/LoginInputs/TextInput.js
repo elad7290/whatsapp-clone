@@ -12,7 +12,7 @@ function TextInput(props) {
     return (
         <div className="input-box">
             <i className={icon}/>
-            <input type="text" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved}/>
+            <input type="text" {...inputProps} onChange={onChange} onBlur={handleLeave} leaved={leaved} className="loginInput"/>
             <div id="err-msg">{errorMessage}</div>
         </div>
     );
