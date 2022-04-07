@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     flex: 0.35;
+
 }
 .fa{
     cursor: pointer;
@@ -49,4 +50,6 @@
     flex: 1;
     overflow: scroll;
     background-color: white;
+    overflow-x: hidden;
+    border-radius: 20px;
 }
