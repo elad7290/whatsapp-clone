@@ -1,4 +1,5 @@
 import "./Chat.css"
+import Message from "../Message/Message";
 function Chat() {
     const sendMessage = (e)=> {
         /**/
@@ -17,7 +18,18 @@ function Chat() {
                     <i className="fa fa-ellipsis-vertical"/>
                 </div>
             </div>
-            <div className="chat_body">01:34:00</div>
+            <div className="chat_body">
+                <Message/>
+                <Message/>
+                <Message/>
+                <Message receiver="receiver"/>
+                <Message receiver="receiver"/>
+                <Message receiver="receiver"/>
+                <Message receiver="receiver"/>
+                <Message receiver="receiver"/>
+                <Message receiver="receiver"/>
+                <Message/>
+            </div>
             <div className="chat_footer">
                 <form>
                     <input type="text" placeholder="Type a message..."/>

@@ -33,14 +33,13 @@
 
 .chat_body {
     flex: 1;
-    background-image: url("./official-whatsapp-background-image.jpg");
-    opacity: 0.3;
+    background-image: url("official-whatsapp-background-image.png");
     background-repeat: repeat;
     background-position: center;
-    padding: 30px;
+    padding: 10px;
     overflow: scroll;
+    overflow-x: hidden;
 }
-
 .chat_footer {
     display: flex;
     justify-content: space-between;
