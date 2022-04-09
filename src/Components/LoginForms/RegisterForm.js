@@ -6,6 +6,7 @@ import ImageInput from "../LoginInputs/ImageInput";
 import {Link, Navigate} from "react-router-dom";
 import {useContext, useState} from "react";
 import {UserContext} from "../../UserContext";
+import AddUser from "../../Server/AddUser";
 
 function RegisterForm(){
     const [values, setValues] = useState({
@@ -28,7 +29,7 @@ function RegisterForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // add user
+        AddUser(values);
         setUser(values);
     };
 

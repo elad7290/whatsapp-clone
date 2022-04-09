@@ -7,15 +7,14 @@ import Chat from "./Chat/Chat";
 
 function HomePage() {
     const {user, setUser} = useContext(UserContext);
-    /*if (!user) { // check if user not logged in
+    console.log("at home page ", user);
+    if (!user) { // check if user not logged in
         return <Navigate to="/login"/>;
     }
-     */
-
-    return (
+   return (
         <div className="app">
             <div className="app_body">
-                <Sidebar/>
+                <Sidebar user={user}/>
                 <Chat/>
             </div>
         </div>

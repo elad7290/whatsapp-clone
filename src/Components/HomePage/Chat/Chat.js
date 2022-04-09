@@ -1,8 +1,15 @@
 import "./Chat.css"
 import Message from "../Message/Message";
+import {useState} from "react";
 function Chat() {
+    const [input, setInput] = useState("");
+    const handleChange = (e) => {
+        setInput(e.target.value);
+    }
     const sendMessage = (e)=> {
-        /**/
+        e.preventDefault();
+        console.log("you typed ", input);
+        setInput("");
     }
 
     return (
@@ -10,7 +17,7 @@ function Chat() {
             <div className="chat_header">
                 <i className="fa fa-circle-user"/>
                 <div className="chat_header_info">
-                    <h5>roon nunber</h5>
+                    <h5>userName</h5>
                 </div>
                 <div className="chat_header_right">
                     <i className="fa fa-magnifying-glass"/>
@@ -32,7 +39,7 @@ function Chat() {
             </div>
             <div className="chat_footer">
                 <form>
-                    <input type="text" placeholder="Type a message..."/>
+                    <input type="text" placeholder="Type a message..." value={input} onChange={handleChange}/>
                     <button type="submit" onClick={sendMessage}>send</button>
                 </form>
                 <i className="fa fa-microphone"/>
