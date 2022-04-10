@@ -4,7 +4,7 @@ import img3 from "./Images/user3.jpg"
 
 const Users = [
     {username:"Tiger", nickname:"TY-TY", password:"1", image: img1},
-    {username:"Panda", nickname:"Doobi", password:"Dubigal12!", image: img2},
+    {username:"Panda", nickname:"Doobi", password:"1", image: img2},
     {username:"Lion", nickname:"Lio", password:"1", image: img3}
 ];
 

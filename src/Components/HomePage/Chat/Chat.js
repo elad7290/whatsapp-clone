@@ -31,10 +31,6 @@ function Chat() {
                 <Message/>
                 <Message receiver="receiver"/>
                 <Message receiver="receiver"/>
-                <Message receiver="receiver"/>
-                <Message receiver="receiver"/>
-                <Message receiver="receiver"/>
-                <Message receiver="receiver"/>
                 <Message/>
             </div>
             <div className="chat_footer">

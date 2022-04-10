@@ -6,7 +6,7 @@ import GetChats from "../../../Server/GetChats";
 
 function Sidebar(props) {
     const {user} = props;
-    const [chatsDict, setChatsDict] = useState([]);
+    const [chatsDict, setChatsDict] = useState(GetChats(user.username));
 
     useEffect(() => {
         const chatsDict = GetChats(user.username);

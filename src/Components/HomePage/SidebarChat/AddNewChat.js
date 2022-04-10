@@ -6,13 +6,14 @@ function AddNewChat(props) {
     // find all users that userName can add
     const {activeChats} = props;
     const allUsers = GetAllUsersName();
-    const availableUsers = allUsers.filter((user)=> (!activeChats.includes(user)));
+    const availableUsers = allUsers.filter((user) => (!activeChats.includes(user)));
+    const [searchQuery, setSearchQuery] = useState(availableUsers);
 
-    const [searchQuery, setSearchQuery] = useState([]);
     const searchBox = useRef(null);
 
     const search = () => {
         setSearchQuery(availableUsers.filter((user)=> (user.includes(searchBox.current.value))));
+        console.log(searchQuery);
     }
 
     const createChat = () => {
@@ -34,9 +35,9 @@ function AddNewChat(props) {
                         <div className="modal-body">
                             <div className="dropdown">
                                 <input type="text" id="add_user_input" placeholder="search for available users..." data-bs-toggle="dropdown" onKeyUp={search} ref={searchBox} autoComplete="off"/>
-                                <ul className="dropdown-menu" aria-labelledby="add_user_input">
+                                <div className="dropdown-menu" aria-labelledby="add_user_input">
                                     {searchQuery.map((user, key) => (<li key={key} value={user} className="dropdown-item">{user}</li>))}
-                                </ul>
+                                </div>
                             </div>
                         </div>
                         <div className="modal-footer">

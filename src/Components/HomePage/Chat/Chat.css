@@ -39,6 +39,7 @@
     padding: 10px;
     overflow: scroll;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 .chat_footer {
     display: flex;
