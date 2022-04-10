@@ -2,6 +2,8 @@ import "./SidebarChat.css"
 import {useRef, useState} from "react";
 import GetAllUsersName from "../../../Server/GetAllUsersName";
 import Alert from "../../Alert/Alert";
+import SidebarChat from "./SidebarChat";
+import ReactDOM from "react-dom";
 
 function AddNewChat(props) {
     // find all users that userName can add
@@ -24,7 +26,8 @@ function AddNewChat(props) {
     const createChat = () => {
         const input = document.getElementById("add_user_input");
         if (availableUsers.includes(input.value)){
-            Alert("success","warning");
+            const sidebar_chats = document.getElementsByClassName("sidebar_chats")[0];
+            //ReactDOM.render(<SidebarChat userName={input.value}/>, sidebar_chats);
         } else {
             Alert("user doesn't exist!","danger");
         }
@@ -59,7 +62,7 @@ function AddNewChat(props) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={cancel}>Close</button>
-                            <button type="button" className="btn btn-primary" onClick={createChat}>Add</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={createChat}>Add</button>
                         </div>
                     </div>
                 </div>
