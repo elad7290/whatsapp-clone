@@ -8,6 +8,12 @@ function Sidebar(props) {
     const {user} = props;
     const [chatsDict, setChatsDict] = useState(GetChats(user.username));
 
+    const newChat = (value) => {
+        chatsDict[value] = [];
+        setChatsDict(chatsDict);
+        console.log(chatsDict);
+    }
+
     useEffect(() => {
         const chatsDict = GetChats(user.username);
         setChatsDict(chatsDict);
@@ -29,7 +35,7 @@ function Sidebar(props) {
                 </div>
             </div>
             <div className="sidebar_chats">
-                <AddNewChat activeChats={Object.keys(chatsDict)}/>
+                <AddNewChat activeChats={Object.keys(chatsDict)} newChat={newChat}/>
                 {Object.entries(chatsDict).map(([key,value])=>(<SidebarChat key={key} userName={key} lastMessage={value[value.length-1].content}/>))}
             </div>
         </div>
