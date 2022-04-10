@@ -15,6 +15,10 @@
     margin-left: 15px;
 }
 #search{
-
     width: 350px;
+}
+#add_user_input{
+    padding: 10px;
+    border: none;
+    width: 400px;
 }

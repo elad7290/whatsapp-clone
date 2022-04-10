@@ -6,13 +6,12 @@ import GetChats from "../../../Server/GetChats";
 
 function Sidebar(props) {
     const {user} = props;
-    const [chats, setChats] = useState([]);
+    const [chatsDict, setChatsDict] = useState([]);
 
     useEffect(() => {
-        const {messages, chats} = GetChats(user.username);
-        console.log("chats ", chats);
-        console.log("messages ", messages);
-    }, [])
+        const chatsDict = GetChats(user.username);
+        setChatsDict(chatsDict);
+    }, []);
 
     return (
         <div className="sidebar">
@@ -30,15 +29,8 @@ function Sidebar(props) {
                 </div>
             </div>
             <div className="sidebar_chats">
-                <AddNewChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
-                <SidebarChat/>
+                <AddNewChat activeChats={Object.keys(chatsDict)}/>
+                {Object.entries(chatsDict).map(([key,value])=>(<SidebarChat key={key} userName={key} lastMessage={value[value.length-1].content}/>))}
             </div>
         </div>
     )
