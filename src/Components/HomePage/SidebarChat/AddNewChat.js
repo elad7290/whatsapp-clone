@@ -20,7 +20,7 @@ function AddNewChat(props) {
         input.value = e.target.innerText;
     }
 
-    const createChat = (e) => {
+    const createChat = () => {
         const input = document.getElementById("add_user_input");
         if (allUsers.includes(input.value)){
             CreateChat(user,input.value);

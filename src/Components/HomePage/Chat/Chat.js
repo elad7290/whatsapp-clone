@@ -8,11 +8,13 @@ import AddNewMessage from "../../../Server/AddNewMessage";
 
 function Chat(props) {
     const{user}=props;
+
     const [input, setInput] = useState("");
     /* probably need also for image*/
     const [chatName,setChatName]=useState("");
     const [messages,setMessages]=useState([]);
     const {chatId}=useParams();
+
     useEffect(()=>{
         if(chatId){
             /* probably need also for image*/
@@ -20,9 +22,11 @@ function Chat(props) {
             setMessages(GetMessages(user,chatId));
         }
     },[chatId]);
+
     const handleChange = (e) => {
         setInput(e.target.value);
     }
+
     const sendMessage = (e)=> {
         e.preventDefault();
         const message={
@@ -32,9 +36,7 @@ function Chat(props) {
                 type: "text",
                 time: new Date().toLocaleString()
         };
-        console.log(message);
         AddNewMessage(message);
-
         setInput("");
     }
 
