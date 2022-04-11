@@ -1,14 +1,19 @@
 import "./SidebarChat.css"
+import {Link} from "react-router-dom";
+import GetNicknameById from "../../../Server/GetNicknameById";
 function SidebarChat(props){
-    const{userName,lastMessage,img}=props;
+    const{name,lastMessage,img,id}=props;
     return(
-        <div className="sidebar_chat">
-            <i className="fa fa-circle-user"/>
-            <div className="sidebar_chat_info">
-                <h4>{userName}</h4>
-                <div>{lastMessage}</div>
+        <Link to={`chats/${id}`}>
+            <div className="sidebar_chat">
+                <i className="fa fa-circle-user"/>
+                <div className="sidebar_chat_info">
+                    <h4>{GetNicknameById(name)}</h4>
+                    <div>last message...</div>
+                </div>
             </div>
-        </div>
+        </Link>
+
     )
 }
 export default SidebarChat;

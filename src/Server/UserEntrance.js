@@ -1,6 +1,6 @@
 import Users from './Users'
 
-function GetUser(pwd, username) {
+function UserEntrance(pwd, username) {
     for (let i = 0; i < Users.length; i++) {
         if (Users[i].username === username && Users[i].password === pwd) {
             return Users[i];
@@ -9,4 +9,4 @@ function GetUser(pwd, username) {
     return null;
 }
 
-export default GetUser;
+export default UserEntrance;

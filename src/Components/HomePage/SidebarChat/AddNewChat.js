@@ -4,18 +4,19 @@ import GetAllUsersName from "../../../Server/GetAllUsersName";
 import Alert from "../../Alert/Alert";
 import SidebarChat from "./SidebarChat";
 import ReactDOM from "react-dom";
+import CreateChat from "../../../Server/CreateChat";
+import GetSidebar from "../../../Server/UserChats/GetSidebar";
 
 function AddNewChat(props) {
+    const {user,setChats}=props;
     // find all users that userName can add
-    const {activeChats} = props;
     const allUsers = GetAllUsersName();
-    const availableUsers = allUsers.filter((user) => (!activeChats.includes(user)));
-    const [searchQuery, setSearchQuery] = useState(availableUsers);
-
+    //const availableUsers = [];
+    const [searchQuery, setSearchQuery] = useState(allUsers);
     const searchBox = useRef(null);
 
     const search = () => {
-        setSearchQuery(availableUsers.filter((user)=> (user.includes(searchBox.current.value))));
+        setSearchQuery(allUsers.filter((user)=> (user.includes(searchBox.current.value))));
     }
 
     const choose = (e) => {
@@ -23,17 +24,17 @@ function AddNewChat(props) {
         input.value = e.target.innerText;
     }
 
-    const createChat = () => {
+    const createChat = (e) => {
         const input = document.getElementById("add_user_input");
-        if (availableUsers.includes(input.value)){
-            const sidebar_chats = document.getElementsByClassName("sidebar_chats")[0];
-            //ReactDOM.render(<SidebarChat userName={input.value}/>, sidebar_chats);
+        if (allUsers.includes(input.value)){
+            CreateChat(user,input.value);
+            setChats([...GetSidebar(user)]);
         } else {
             Alert("user doesn't exist!","danger");
         }
         input.value = null; // don't reload on fail
     }
-    
+
     const cancel = () => {
         const input = document.getElementById("add_user_input");
         input.value = null;
@@ -42,6 +43,7 @@ function AddNewChat(props) {
     return (
         <>
             <div className="sidebar_chat" data-bs-toggle="modal" data-bs-target="#addNewChatModal">
+                <div id="alert"/>
                 <h4>Add New Chat</h4>
             </div>
             <div className="modal fade" id="addNewChatModal" tabIndex="-1" aria-labelledby="modalLabel"
@@ -50,7 +52,6 @@ function AddNewChat(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="modalLabel">Add New Chat</h5>
-                            <div id="alert"/>
                         </div>
                         <div className="modal-body">
                             <div className="dropdown">

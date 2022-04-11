@@ -2,21 +2,14 @@ import "./Sidebar.css"
 import SidebarChat from "../SidebarChat/SidebarChat";
 import AddNewChat from "../SidebarChat/AddNewChat";
 import {useEffect, useState} from "react";
-import GetChats from "../../../Server/GetChats";
+import GetSidebar from "../../../Server/UserChats/GetSidebar";
 
 function Sidebar(props) {
     const {user} = props;
-    const [chatsDict, setChatsDict] = useState(GetChats(user.username));
+    const [chats,setChats]=useState([]);
 
-    const newChat = (value) => {
-        chatsDict[value] = [];
-        setChatsDict(chatsDict);
-        console.log(chatsDict);
-    }
-
-    useEffect(() => {
-        const chatsDict = GetChats(user.username);
-        setChatsDict(chatsDict);
+    useEffect( () => {
+        setChats(GetSidebar(user));
     }, []);
 
     return (
@@ -35,12 +28,11 @@ function Sidebar(props) {
                 </div>
             </div>
             <div className="sidebar_chats">
-                <AddNewChat activeChats={Object.keys(chatsDict)} newChat={newChat}/>
-                {Object.entries(chatsDict).map(([key,value])=>(<SidebarChat key={key} userName={key} lastMessage={value[value.length-1].content}/>))}
+                <AddNewChat user={user} setChats={setChats}/>
+                {chats.map((chat,key)=>(<SidebarChat key={key} id={chat} name={chat}/>))}
             </div>
         </div>
     )
-
 }
 
 export default Sidebar;

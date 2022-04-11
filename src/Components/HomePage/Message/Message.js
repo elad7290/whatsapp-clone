@@ -1,13 +1,26 @@
 import "./Message.css"
 function Message(props) {
-    const {receiver} = props;
-    return(
-        <p className={"chat_message "+receiver}>
-            message content
-            <span className="time_stamp ">
-                03:25
+    const {sender,message} = props;
+
+    if (sender){
+        return(
+            <p className={"chat_message sender"}>
+                {message.content}
+                <span className="time_stamp ">
+                {message.time}
             </span>
-        </p>
-    );
+            </p>
+        );
+    } else {
+        return(
+            <p className={"chat_message"}>
+                {message.content}
+                <span className="time_stamp ">
+                {message.time}
+            </span>
+            </p>
+        );
+    }
+
 }
 export default Message;

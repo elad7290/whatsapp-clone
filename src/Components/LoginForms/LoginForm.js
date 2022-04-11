@@ -3,7 +3,7 @@ import TextInput from "../LoginInputs/TextInput";
 import PasswordInput from "../LoginInputs/PasswordInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import {Link, Navigate} from "react-router-dom";
-import GetUser from "../../Server/GetUser";
+import UserEntrance from "../../Server/UserEntrance";
 import Alert from "../Alert/Alert";
 import {useContext} from "react";
 import {UserContext} from "../../UserContext";
@@ -18,7 +18,7 @@ function LoginForm() {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const pwd = document.getElementById('password').value;
-        const guest = GetUser(pwd, username);
+        const guest = UserEntrance(pwd, username);
         if (guest){
             setUser(guest);
             //return <Navigate to="/HomePage"/>;

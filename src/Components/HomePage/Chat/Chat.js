@@ -1,15 +1,48 @@
 import "./Chat.css"
 import Message from "../Message/Message";
-import {useState} from "react";
-function Chat() {
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import GetNicknameById from "../../../Server/GetNicknameById";
+import GetMessages from "../../../Server/GetMessages";
+import AddNewMessage from "../../../Server/AddNewMessage";
+function Chat(props) {
+    const{user}=props;
     const [input, setInput] = useState("");
+    /* probably need also for image*/
+    const [chatName,setChatName]=useState("");
+    const [messages,setMessages]=useState([]);
+    const {chatId}=useParams();
+    useEffect(()=>{
+        if(chatId){
+            /* probably need also for image*/
+            setChatName(GetNicknameById(chatId));
+            setMessages(GetMessages(user,chatId));
+        }
+    },[chatId]);
     const handleChange = (e) => {
         setInput(e.target.value);
     }
     const sendMessage = (e)=> {
         e.preventDefault();
-        console.log("you typed ", input);
+        const message={
+                sender: user.username,
+                receiver: chatId,
+                content: input,
+                type: "text",
+                time: new Date().toLocaleString()
+    };
+        AddNewMessage(message);
+
         setInput("");
+    }
+    const messagesView = (message) => {
+        if (message.sender===user.username){
+            return <Message/>;
+        }
+        else {
+            return <Message receiver="receiver"/>
+        }
+
     }
 
     return (
@@ -17,7 +50,7 @@ function Chat() {
             <div className="chat_header">
                 <i className="fa fa-circle-user"/>
                 <div className="chat_header_info">
-                    <h5>userName</h5>
+                    <h5>{chatName}</h5>
                 </div>
                 <div className="chat_header_right">
                     <i className="fa fa-magnifying-glass"/>
@@ -26,12 +59,7 @@ function Chat() {
                 </div>
             </div>
             <div className="chat_body">
-                <Message/>
-                <Message/>
-                <Message/>
-                <Message receiver="receiver"/>
-                <Message receiver="receiver"/>
-                <Message/>
+                {messages.map((message,key)=> (<Message key={key} sender={user.username===message.sender} message={message}/>))}
             </div>
             <div className="chat_footer">
                 <form>
