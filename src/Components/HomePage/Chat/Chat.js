@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import GetNicknameById from "../../../Server/GetNicknameById";
 import GetMessages from "../../../Server/GetMessages";
 import AddNewMessage from "../../../Server/AddNewMessage";
+
 function Chat(props) {
     const{user}=props;
     const [input, setInput] = useState("");
@@ -35,15 +36,6 @@ function Chat(props) {
         AddNewMessage(message);
 
         setInput("");
-    }
-    const messagesView = (message) => {
-        if (message.sender===user.username){
-            return <Message/>;
-        }
-        else {
-            return <Message receiver="receiver"/>
-        }
-
     }
 
     return (

@@ -7,6 +7,5 @@ function AddUser(newUser) {
         image: newUser.image
     };
     Users.push(user);
-    console.log(Users);
 }
 export default AddUser;

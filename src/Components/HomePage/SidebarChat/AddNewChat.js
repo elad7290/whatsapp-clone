@@ -2,16 +2,12 @@ import "./SidebarChat.css"
 import {useRef, useState} from "react";
 import GetAllUsersName from "../../../Server/GetAllUsersName";
 import Alert from "../../Alert/Alert";
-import SidebarChat from "./SidebarChat";
-import ReactDOM from "react-dom";
 import CreateChat from "../../../Server/CreateChat";
 import GetSidebar from "../../../Server/UserChats/GetSidebar";
 
 function AddNewChat(props) {
     const {user,setChats}=props;
-    // find all users that userName can add
     const allUsers = GetAllUsersName();
-    //const availableUsers = [];
     const [searchQuery, setSearchQuery] = useState(allUsers);
     const searchBox = useRef(null);
 

@@ -4,8 +4,7 @@ import RegisterForm from "./Components/LoginForms/RegisterForm";
 import {BrowserRouter, Routes, Route, Navigate, Switch} from "react-router-dom";
 import HomePage from "./Components/HomePage/HomePage";
 import {UserContext} from "./UserContext"
-import {useMemo, useState} from "react";
-import Chat from "./Components/HomePage/Chat/Chat";
+import {useState} from "react";
 import UserEntrance from "./Server/UserEntrance";
 
 

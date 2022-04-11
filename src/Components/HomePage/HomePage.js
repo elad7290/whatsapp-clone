@@ -1,10 +1,9 @@
 import "./HomePage.css"
 import {useContext} from "react";
 import {UserContext} from "../../UserContext";
-import {Navigate, Route, Router, Routes, Switch} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import Chat from "./Chat/Chat";
-import LoginForm from "../LoginForms/LoginForm";
 
 function HomePage() {
     const {user, setUser} = useContext(UserContext);

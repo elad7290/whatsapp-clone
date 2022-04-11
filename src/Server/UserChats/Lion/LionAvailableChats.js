@@ -1,3 +1,3 @@
-const LionAvailableChats=["Tiger"];
+const LionAvailableChats = ["Tiger"];
 
 export default LionAvailableChats;

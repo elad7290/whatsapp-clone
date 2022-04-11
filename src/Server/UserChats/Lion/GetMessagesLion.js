@@ -1,7 +1,7 @@
 import LionAndTiger from "./Tiger/LionAndTiger";
-import LionAndPanda from "./Panda/Panda";
+import LionAndPanda from "./Panda/LionAndPanda";
 
-function GetMessageLion(target){
+function GetMessagesLion(target){
     if(target==="Panda"){
         return LionAndPanda;
     }
@@ -14,4 +14,4 @@ function GetMessageLion(target){
     return[];
 
 }
-export default GetMessageLion;
+export default GetMessagesLion;

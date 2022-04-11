@@ -1,3 +1,4 @@
-const LionAndPanda=[];
+
+ const LionAndPanda = [];
 
 export default LionAndPanda;

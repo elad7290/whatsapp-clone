@@ -1,10 +1,10 @@
-import GetMessageLion from "./UserChats/Lion/GetMessageLion";
+import GetMessagesLion from "./UserChats/Lion/GetMessagesLion";
 
 function GetMessages(source,target) {
     if(source.username==="Lion"){
-        return GetMessageLion(target);
+        return GetMessagesLion(target);
     }
     return[];
-
 }
+
 export default GetMessages;

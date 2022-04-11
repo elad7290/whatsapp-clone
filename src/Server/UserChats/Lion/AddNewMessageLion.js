@@ -1,5 +1,5 @@
 import LionAndTiger from "./Tiger/LionAndTiger";
-import LionAndPanda from "./Panda/Panda";
+import LionAndPanda from "./Panda/LionAndPanda";
 
 function AddNewMessageLion(message) {
     if(message.receiver==="Tiger"){

@@ -1,4 +1,3 @@
-import Users from "./Users";
 import AddNewMessageLion from "./UserChats/Lion/AddNewMessageLion";
 
 function AddNewMessage(message){
