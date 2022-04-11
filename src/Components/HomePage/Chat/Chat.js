@@ -30,7 +30,8 @@ function Chat(props) {
                 content: input,
                 type: "text",
                 time: new Date().toLocaleString()
-    };
+        };
+        console.log(message);
         AddNewMessage(message);
 
         setInput("");
