@@ -2,7 +2,7 @@ import "./SidebarChat.css"
 import {useRef, useState} from "react";
 import GetAllUsersName from "../../../Server/GetAllUsersName";
 import Alert from "../../Alert/Alert";
-import CreateChat from "../../../Server/CreateChat";
+import CreateChat from "../../../Server/UserChats/CreateChat";
 import GetSidebar from "../../../Server/UserChats/GetSidebar";
 
 function AddNewChat(props) {
@@ -29,11 +29,13 @@ function AddNewChat(props) {
             Alert("user doesn't exist!","danger");
         }
         input.value = null; // don't reload on fail
+        search();
     }
 
     const cancel = () => {
         const input = document.getElementById("add_user_input");
         input.value = null;
+        search();
     }
 
     return (

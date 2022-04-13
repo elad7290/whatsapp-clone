@@ -9,8 +9,8 @@ import UserEntrance from "./Server/UserEntrance";
 
 
 function App() {
-    //const [user, setUser] = useState(null);
-    const [user, setUser] = useState(UserEntrance("1", "Lion"));
+    const [user, setUser] = useState(null);
+    //const [user, setUser] = useState(UserEntrance("1", "Lion"));
     return (
         <UserContext.Provider value={{user, setUser}}>
             <BrowserRouter>

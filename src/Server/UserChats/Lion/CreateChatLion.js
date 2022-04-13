@@ -1,11 +1,11 @@
-import LionAvailableChats from "./LionAvailableChats";
+import AvailableChatsLion from "./AvailableChatsLion";
 
 function CreateChatLion(newChat){
-    if(LionAvailableChats.includes(newChat)){
+    if(AvailableChatsLion.includes(newChat)){
         // do nothing
     }
     else {
-        LionAvailableChats.push(newChat);
+        AvailableChatsLion.push(newChat);
     }
 }
 export default CreateChatLion;

@@ -3,8 +3,8 @@ import Message from "../Message/Message";
 import {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import GetNicknameById from "../../../Server/GetNicknameById";
-import GetMessages from "../../../Server/GetMessages";
-import AddNewMessage from "../../../Server/AddNewMessage";
+import GetMessages from "../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
 import {UserContext} from "../../../UserContext";
 
 function Chat() {

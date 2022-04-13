@@ -1,17 +1,25 @@
 import LionAndTiger from "./Tiger/LionAndTiger";
 import LionAndPanda from "./Panda/LionAndPanda";
+import LionAndDuck from "./Duck/LionAndDuck";
+import LionAndLion from "./Lion/LionAndLion";
+import LionAndRabbit from "./Rabbit/LionAndRabbit";
 
 function GetMessagesLion(target){
-    if(target==="Panda"){
+    if (target === "Duck") {
+        return LionAndDuck;
+    }
+    if (target === "Lion") {
+        return LionAndLion;
+    }
+    if (target === "Panda") {
         return LionAndPanda;
     }
-    if(target==="Tiger"){
+    if (target === "Rabbit") {
+        return LionAndRabbit;
+    }
+    if (target === "Tiger") {
         return LionAndTiger;
     }
-    if(target==="Lion"){
-        /**/
-    }
-    return[];
-
+    return [];
 }
 export default GetMessagesLion;

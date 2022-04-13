@@ -54,3 +54,7 @@
     overflow-y: auto;
     border-radius: 20px;
 }
+#search_chats{
+    flex: 1;
+    max-width: 400px;
+}
