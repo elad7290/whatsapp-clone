@@ -1,13 +1,14 @@
 import "./Chat.css"
 import Message from "../Message/Message";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import GetNicknameById from "../../../Server/GetNicknameById";
 import GetMessages from "../../../Server/GetMessages";
 import AddNewMessage from "../../../Server/AddNewMessage";
+import {UserContext} from "../../../UserContext";
 
-function Chat(props) {
-    const{user}=props;
+function Chat() {
+    const {user, setUser} = useContext(UserContext);
 
     const [input, setInput] = useState("");
     /* probably need also for image*/

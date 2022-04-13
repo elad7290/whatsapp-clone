@@ -1,24 +1,28 @@
 import "./Sidebar.css"
 import SidebarChat from "../SidebarChat/SidebarChat";
 import AddNewChat from "../SidebarChat/AddNewChat";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import GetSidebar from "../../../Server/UserChats/GetSidebar";
+import {UserContext} from "../../../UserContext";
 
-function Sidebar(props) {
-    const {user} = props;
+function Sidebar() {
+    const {user, setUser} = useContext(UserContext);
     const [chats,setChats]=useState([]);
 
     useEffect( () => {
         setChats(GetSidebar(user));
     }, []);
+    
+    const logout = () => {
+      setUser(null);
+    }
 
     return (
         <div className="sidebar">
             <div className="sidebar_header">
                 <i className="fa fa-circle-user"/>
                 <div className="sidebar_header_right">
-                    <i className="fa fa-message"/>
-                    <i className="fa fa-ellipsis-vertical"/>
+                    <i className="fa fa-power-off" onClick={logout}/>
                 </div>
             </div>
             <div className="sidebar_search">
@@ -29,7 +33,7 @@ function Sidebar(props) {
             </div>
             <div className="sidebar_chats">
                 <AddNewChat user={user} setChats={setChats}/>
-                {chats.map((chat,key)=>(<SidebarChat key={key} id={chat} name={chat}/>))}
+                {chats.map((chat,key)=>(<SidebarChat key={key} id={chat} name={chat} user={user}/>))}
             </div>
         </div>
     )

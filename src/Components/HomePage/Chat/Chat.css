@@ -59,6 +59,7 @@
     padding: 10px;
     border: none;
     margin-right: 4px; /*distance from microphone*/
+    margin-left: 4px;
 }
 .chat_footer>form>button{
     display: none; /*hide send message button*/

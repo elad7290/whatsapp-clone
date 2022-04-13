@@ -10,9 +10,11 @@ import {UserContext} from "../../UserContext";
 
 function LoginForm() {
     const {user,setUser} = useContext(UserContext);
+    /*
     if (user) { // check if user already logged in
         return <Navigate to="/homepage"/>;
     }
+     */
 
     const handleSubmit = (e) => {
         e.preventDefault();
