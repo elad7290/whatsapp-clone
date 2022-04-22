@@ -16,4 +16,5 @@
 .sender{
     margin-left: auto;
     background-color: #dcf8c6;
+    word-break: break-word;
 }

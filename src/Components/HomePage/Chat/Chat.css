@@ -60,6 +60,13 @@
     border: none;
     margin-right: 4px; /*distance from microphone*/
     margin-left: 4px;
+    word-break: break-word;
+    /*
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+     */
+
 }
 .chat_footer>form>button{
     display: none; /*hide send message button*/

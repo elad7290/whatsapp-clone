@@ -6,6 +6,7 @@ import GetNicknameById from "../../../Server/GetNicknameById";
 import GetMessages from "../../../Server/UserChats/GetMessages";
 import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
 import {UserContext} from "../../../UserContext";
+import AudioMessage from "./AudioMessage/AudioMessage";
 
 function Chat() {
     const {user, setUser} = useContext(UserContext);
@@ -62,7 +63,7 @@ function Chat() {
                     <input type="text" placeholder="Type a message..." value={input} onChange={handleChange}/>
                     <button type="submit" onClick={sendMessage}>send</button>
                 </form>
-                <i className="fa fa-microphone"/>
+                <AudioMessage  sender={user.username} receiver={chatId} setMessages={setMessages} user={user}/>
             </div>
 
         </div>

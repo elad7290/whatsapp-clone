@@ -12,13 +12,32 @@ function SidebarChat(props){
             setMessages([...GetMessages(user,id)]);
         }
     }); // when work with DB, add deps: [id]
+    let msg='';
+    if (messages[messages.length-1]) {
+        if(messages[messages.length-1].type==="text"){
+            msg=messages[messages.length-1].content;
+        }
+        else if(messages[messages.length-1].type==="audio")
+        {
+            msg="audio";
+        }
+        //we need to do one more for img
+    }
+
+
     return(
         <Link to={`chats/${id}`} id="sidebar_chat_link">
             <div className="sidebar_chat">
                 <i className="fa fa-circle-user"/>
                 <div className="sidebar_chat_info">
                     <h4>{GetNicknameById(name)}</h4>
-                    <div>{messages[messages.length-1]?.content}</div>
+                    <div>
+                        <div id="sidebar_message_content">{msg} </div>
+                        <span className="time_stamp ">
+                        {messages[messages.length-1]?.time}
+                     </span>
+                    </div>
+
                 </div>
             </div>
         </Link>
