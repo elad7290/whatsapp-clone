@@ -14,7 +14,7 @@ function AudioMessage(props) {
             if (recorder.state === 'inactive'){
                 let blob = new Blob(items,{type: 'audio/webm'});
                 // build msg
-                var msg={
+                const msg={
                     sender: sender,
                     receiver: receiver,
                     content: URL.createObjectURL(blob),
@@ -39,10 +39,17 @@ function AudioMessage(props) {
     }
 
     const stop=()=> {
-        recorder.stop();
+        if (recorder.state === 'recording'){
+            recorder.stop();
+        }
         clearInterval(timeout);
     }
-    return(<i className="fa fa-microphone" onMouseDown={record} onMouseUp={stop}/>);
+    return(
+        <div>
+            <i className="fa fa-microphone icon_footer" onMouseDown={record} onMouseUp={stop}/>
+        </div>
+
+    );
 }
 
 export default AudioMessage;

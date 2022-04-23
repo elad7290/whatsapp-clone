@@ -72,5 +72,9 @@
     display: none; /*hide send message button*/
 }
 .icon_footer{
-    margin: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#image_footer{
+    display: none;
 }

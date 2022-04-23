@@ -12,6 +12,8 @@ function Message(props) {
             </audio>;
     }
     //we need to do one more for img
+
+
     if (sender){
         return(
             <p className={"chat_message sender"}>
