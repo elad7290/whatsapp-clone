@@ -63,6 +63,7 @@ function Chat() {
                     <input type="text" placeholder="Type a message..." value={input} onChange={handleChange}/>
                     <button type="submit" onClick={sendMessage}>send</button>
                 </form>
+                <i className="fa fa-image icon_footer"/>
                 <AudioMessage  sender={user.username} receiver={chatId} setMessages={setMessages} user={user}/>
             </div>
 

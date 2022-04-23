@@ -5,7 +5,6 @@ import AddNewMessageRabbit from "./Rabbit/AddNewMessageRabbit";
 import AddNewMessageTiger from "./Tiger/AddNewMessageTiger";
 
 function AddNewMessage(message){
-    console.log(message);
     // add to sender
     if(message.sender==="Duck"){
         AddNewMessageDuck(message);

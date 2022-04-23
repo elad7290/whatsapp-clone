@@ -3,6 +3,7 @@ import GetMessages from "../../../../Server/UserChats/GetMessages";
 
 function AudioMessage(props) {
     const {sender, receiver, setMessages,user} = props;
+
     let device = navigator.mediaDevices.getUserMedia({audio: true});
     let items = [];
     let recorder;
@@ -12,9 +13,7 @@ function AudioMessage(props) {
             items.push(e.data);
             if (recorder.state === 'inactive'){
                 let blob = new Blob(items,{type: 'audio/webm'});
-                //document.getElementById('audio').innerHTML = '<source src="'+URL.createObjectURL(blob)+'" type="video/webm">';
                 // build msg
-                console.log("all msg 1", GetMessages(user, receiver));
                 var msg={
                     sender: sender,
                     receiver: receiver,
@@ -22,28 +21,28 @@ function AudioMessage(props) {
                     type: "audio",
                     time: new Date().toLocaleString()
                 };
-                console.log(msg);
+                // send msg
                 AddNewMessage(msg);
                 setMessages([...GetMessages(user, receiver)]);
-                console.log("all msg 2", GetMessages(user, receiver));
-                // send msg
             }
         }
     });
 
     var timeout;
-    const record=(control)=>{
+    const record=()=>{
         items = [];
         timeout = setInterval(() => {
-            recorder.start();
+            if (recorder.state !== 'recording'){
+                recorder.start();
+            }
         }, 100);
     }
 
-    const stop=(control)=> {
+    const stop=()=> {
         recorder.stop();
         clearInterval(timeout);
     }
-    return(<i className="fa fa-microphone" onMouseDown={record} onMouseUp={stop}></i>);
+    return(<i className="fa fa-microphone" onMouseDown={record} onMouseUp={stop}/>);
 }
 
 export default AudioMessage;
