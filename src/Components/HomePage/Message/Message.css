@@ -18,3 +18,7 @@
     background-color: #dcf8c6;
     word-break: break-word;
 }
+.img-fluid{
+    max-width: 333px;
+    max-height: 333px;
+}

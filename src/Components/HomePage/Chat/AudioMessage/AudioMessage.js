@@ -13,6 +13,25 @@ function AudioMessage(props) {
             items.push(e.data);
             if (recorder.state === 'inactive'){
                 let blob = new Blob(items,{type: 'audio/webm'});
+                var reader = new FileReader();
+                reader.addEventListener("load", function() {
+                    // build msg
+                    const msg={
+                        sender: sender,
+                        receiver: receiver,
+                        content: reader.result,
+                        type: "audio",
+                        time: new Date().toLocaleString()
+                    };
+                    // send msg
+                    AddNewMessage(msg);
+                    setMessages([...GetMessages(user, receiver)]);
+                }, false);
+                reader.readAsDataURL(blob);
+
+
+
+                /*
                 // build msg
                 const msg={
                     sender: sender,
@@ -21,9 +40,12 @@ function AudioMessage(props) {
                     type: "audio",
                     time: new Date().toLocaleString()
                 };
+                console.log(msg);
                 // send msg
                 AddNewMessage(msg);
                 setMessages([...GetMessages(user, receiver)]);
+
+                 */
             }
         }
     });

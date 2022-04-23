@@ -7,7 +7,8 @@ import GetMessages from "../../../Server/UserChats/GetMessages";
 import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
 import {UserContext} from "../../../UserContext";
 import AudioMessage from "./AudioMessage/AudioMessage";
-import ImageMessage from "./ImageMessage/ImageMessage";
+import ImageMessage from "./AttachmentFilesMessage/ImageMessage/ImageMessage";
+import AttachmentFilesMessage from "./AttachmentFilesMessage/AttachmentFilesMessage";
 
 function Chat() {
     const {user, setUser} = useContext(UserContext);
@@ -51,9 +52,7 @@ function Chat() {
                     <h5>{chatName}</h5>
                 </div>
                 <div className="chat_header_right">
-                    <i className="fa fa-magnifying-glass"/>
-                    <i className="fa fa-paperclip"/>
-                    <i className="fa fa-ellipsis-vertical"/>
+
                 </div>
             </div>
             <div className="chat_body">
@@ -64,8 +63,8 @@ function Chat() {
                     <input type="text" placeholder="Type a message..." value={input} onChange={handleChange}/>
                     <button type="submit" onClick={sendMessage}>send</button>
                 </form>
-                <ImageMessage sender={user.username} receiver={chatId} setMessages={setMessages} user={user}/>
                 <AudioMessage  sender={user.username} receiver={chatId} setMessages={setMessages} user={user}/>
+                <AttachmentFilesMessage sender={user.username} receiver={chatId} setMessages={setMessages} user={user}/>
             </div>
 
         </div>

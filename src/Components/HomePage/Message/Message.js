@@ -11,8 +11,10 @@ function Message(props) {
                 <source src={message.content} type="video/webm"/>
             </audio>;
     }
-    //we need to do one more for img
-
+    else if(message.type==="image")
+    {
+        msg= <img src={message.content} className="img-fluid" alt="image..."/>;
+    }
 
     if (sender){
         return(

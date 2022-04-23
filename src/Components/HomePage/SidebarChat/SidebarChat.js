@@ -21,7 +21,10 @@ function SidebarChat(props){
         {
             msg="audio";
         }
-        //we need to do one more for img
+        else if(messages[messages.length-1].type==="image")
+        {
+            msg="image";
+        }
     }
 
 
