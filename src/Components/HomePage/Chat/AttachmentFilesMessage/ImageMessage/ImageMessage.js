@@ -18,7 +18,6 @@ function ImageMessage(props){
                    type: "image",
                    time: new Date().toLocaleString()
                };
-               console.log(msg);
                // send msg
                AddNewMessage(msg);
                setMessages([...GetMessages(user, receiver)]);

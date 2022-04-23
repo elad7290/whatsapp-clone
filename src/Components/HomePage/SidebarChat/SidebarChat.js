@@ -1,10 +1,11 @@
 import "./SidebarChat.css"
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import GetNicknameById from "../../../Server/GetNicknameById";
 import {useEffect, useState} from "react";
 import GetMessages from "../../../Server/UserChats/GetMessages";
+import GetImageById from "../../../Server/GetImageById";
 function SidebarChat(props){
-    const{name,img,id,user}=props;
+    const{name,id,user}=props;
     const [messages,setMessages]=useState([]);
 
     useEffect(()=>{
@@ -31,7 +32,7 @@ function SidebarChat(props){
     return(
         <Link to={`chats/${id}`} id="sidebar_chat_link">
             <div className="sidebar_chat">
-                <i className="fa fa-circle-user"/>
+                <img src={GetImageById(id)} alt="avatar" className="user_picture"/>
                 <div className="sidebar_chat_info">
                     <h4>{GetNicknameById(name)}</h4>
                     <div>

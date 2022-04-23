@@ -1,8 +1,8 @@
 import Tiger_img from "./Images/Tiger_img.jpg"
 import Panda_img from "./Images/Panda_img.jpg"
-import Duck_img from "./Images/Lion_img.jpg"
+import Duck_img from "./Images/Duck_img.jpg"
 import Lion_img from "./Images/Lion_img.jpg"
-import Rabbit_img from "./Images/Lion_img.jpg"
+import Rabbit_img from "./Images/Rabbit_img.jpg"
 
 const Users = [
     {username:"Tiger", nickname:"TY-TY", password:"1", image: Tiger_img},

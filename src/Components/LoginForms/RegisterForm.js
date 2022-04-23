@@ -14,7 +14,7 @@ function RegisterForm(){
         nickname:"",
         password:"",
         confirmPassword:"",
-        image:""
+        image: "",
     });
 
     const {user,setUser}=useContext(UserContext);
@@ -26,6 +26,20 @@ function RegisterForm(){
     const handleChange = (e) => {
         setValues({...values, [e.target.name]: e.target.value});
     };
+
+    const handleChangeImage = (e) => {
+        var file = e.target.files[0];
+        if (file.type.match("image.*")){
+            var reader = new FileReader();
+            reader.addEventListener("load", function() {
+                setValues({...values, [e.target.name]: reader.result});
+                console.log(values);
+            }, false);
+            if (file){
+                reader.readAsDataURL(file);
+            }
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +56,7 @@ function RegisterForm(){
                 <TextInput icon='fa fa-masks-theater' id='nickname' placeholder='Nickname' name='nickname' value={values['nickname']} onChange={handleChange} errorMessage="Nickname should be at least 3 characters!" required pattern="^.{3,}"/>
                 <PasswordInput icon='fa fa-key' id='password' placeholder='Password' name='password' value={values['password']} onChange={handleChange} errorMessage="Password should be 8-20 characters ant should include at least 1 letter, 1 number and 1 special character!" required pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$"/>
                 <PasswordInput icon='fa fa-key' id='confirmPassword' placeholder='Confirm Password' name='confirmPassword' value={values['confirmPassword']} onChange={handleChange} errorMessage="Passwords don't match!" required pattern={values.password}/>
-                <ImageInput id='image' placeholder='Choose An Image' name='image' value={values['image']} onChange={handleChange} errorMessage="Image is required!" required/>
+                <ImageInput id='image' placeholder='Choose An Image' name='image' onChange={handleChangeImage} errorMessage="Image is required!" required/>
                 <SubmitButton text='REGISTER'/>
             </form>
             <div id="message">

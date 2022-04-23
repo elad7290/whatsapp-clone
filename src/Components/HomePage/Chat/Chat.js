@@ -7,8 +7,8 @@ import GetMessages from "../../../Server/UserChats/GetMessages";
 import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
 import {UserContext} from "../../../UserContext";
 import AudioMessage from "./AudioMessage/AudioMessage";
-import ImageMessage from "./AttachmentFilesMessage/ImageMessage/ImageMessage";
 import AttachmentFilesMessage from "./AttachmentFilesMessage/AttachmentFilesMessage";
+import GetImageById from "../../../Server/GetImageById";
 
 function Chat() {
     const {user, setUser} = useContext(UserContext);
@@ -47,7 +47,7 @@ function Chat() {
     return (
         <div className="chat">
             <div className="chat_header">
-                <i className="fa fa-circle-user"/>
+                <img src={GetImageById(chatId)} alt="avatar" className="user_picture"/>
                 <div className="chat_header_info">
                     <h5>{chatName}</h5>
                 </div>

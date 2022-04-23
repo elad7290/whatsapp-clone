@@ -33,7 +33,7 @@ function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebar_header">
-                <i className="fa fa-circle-user"/>
+                <img src={user.image} alt="avatar" className="user_picture"/>
                 <div className="sidebar_header_right">
                     <i className="fa fa-power-off" onClick={logout}/>
                 </div>
