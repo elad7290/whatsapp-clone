@@ -1,6 +1,6 @@
 # Whatsapp Project By Elad & Chen
 
-## Installations required
+## Installations required :
 
 * node.js
 * npm
