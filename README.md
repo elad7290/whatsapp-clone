@@ -14,3 +14,13 @@ In the project directory, you need to run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## List of registered users :
+
+* Lion
+* Panda
+* Tiger
+* Duck
+* Rabbit
+
+For convenience, everyone's password is "1".
