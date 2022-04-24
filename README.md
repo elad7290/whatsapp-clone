@@ -1,4 +1,4 @@
-# Whatsapp Project By Elad & Chen
+# Whatsapp Clone Project By Elad & Chen
 
 ## Installations required :
 
