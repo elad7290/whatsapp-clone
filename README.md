@@ -6,7 +6,7 @@
 * npm
 * react-router-dom
 
-## How to run our project?
+## How to run our project ?
 
 In the project directory, you need to run:
 
