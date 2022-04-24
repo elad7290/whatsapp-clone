@@ -7,6 +7,8 @@ import {Link, Navigate} from "react-router-dom";
 import {useContext, useState} from "react";
 import {UserContext} from "../../UserContext";
 import AddUser from "../../Server/AddUser";
+import IsUsernameExist from "../../Server/IsUsernameExist";
+import Alert from "../Alert/Alert";
 
 function RegisterForm(){
     const [values, setValues] = useState({
@@ -43,8 +45,14 @@ function RegisterForm(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        AddUser(values);
-        setUser(values);
+        if(IsUsernameExist(values.username)){
+            Alert("this Username is already taken","danger");
+        }
+        else {
+            AddUser(values);
+            setUser(values);
+        }
+
     };
 
     return(
