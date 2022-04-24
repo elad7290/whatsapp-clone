@@ -4,9 +4,6 @@
     flex: 0.35;
 
 }
-.fa{
-    cursor: pointer;
-}
 .sidebar_header{
     display: flex;
     justify-content: space-between;

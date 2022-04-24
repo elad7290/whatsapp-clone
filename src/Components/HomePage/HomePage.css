@@ -17,3 +17,6 @@
     width: 35px;
     height: 35px;
 }
+.clickable{
+    cursor: pointer;
+}

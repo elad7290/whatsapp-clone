@@ -35,7 +35,7 @@ function Sidebar() {
             <div className="sidebar_header">
                 <img src={user.image} alt="avatar" className="user_picture"/>
                 <div className="sidebar_header_right">
-                    <i className="fa fa-power-off" onClick={logout}/>
+                    <i className="fa fa-power-off clickable" onClick={logout}/>
                 </div>
             </div>
             <div className="sidebar_search">

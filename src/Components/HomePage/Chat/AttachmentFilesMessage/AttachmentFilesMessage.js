@@ -1,14 +1,11 @@
 import ImageMessage from "./ImageMessage/ImageMessage";
 
-
 function AttachmentFilesMessage(props){
     const {sender, receiver, setMessages,user} = props;
 
     return(
-
-
     <div className="dropdown">
-        <i className="fa fa-paperclip icon_footer" id="dropdownMenuButton1"
+        <i className="fa fa-paperclip icon_footer clickable" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false">
         </i>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">

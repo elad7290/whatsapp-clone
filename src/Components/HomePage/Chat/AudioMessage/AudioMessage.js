@@ -68,7 +68,7 @@ function AudioMessage(props) {
     }
     return(
         <div>
-            <i className="fa fa-microphone icon_footer" onMouseDown={record} onMouseUp={stop}/>
+            <i className="fa fa-microphone icon_footer clickable" onMouseDown={record} onMouseUp={stop}/>
         </div>
 
     );
