@@ -1,9 +1,9 @@
 import "./SidebarChat.css"
 import {Link} from "react-router-dom";
-import GetNicknameById from "../../../Server/GetNicknameById";
+import GetNicknameById from "../../Server/GetNicknameById";
 import {useEffect, useState} from "react";
-import GetMessages from "../../../Server/UserChats/GetMessages";
-import GetImageById from "../../../Server/GetImageById";
+import GetMessages from "../../Server/UserChats/GetMessages";
+import GetImageById from "../../Server/GetImageById";
 function SidebarChat(props){
     const{name,id,user}=props;
     const [messages,setMessages]=useState([]);

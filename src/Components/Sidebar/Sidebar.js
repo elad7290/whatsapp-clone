@@ -2,9 +2,9 @@ import "./Sidebar.css"
 import SidebarChat from "../SidebarChat/SidebarChat";
 import AddNewChat from "../SidebarChat/AddNewChat";
 import {useContext, useEffect, useRef, useState} from "react";
-import GetSidebar from "../../../Server/UserChats/GetSidebar";
-import {UserContext} from "../../../UserContext";
-import GetNicknameById from "../../../Server/GetNicknameById";
+import GetSidebar from "../../Server/UserChats/GetSidebar";
+import {UserContext} from "../../UserContext";
+import GetNicknameById from "../../Server/GetNicknameById";
 
 function Sidebar() {
     const {user, setUser} = useContext(UserContext);

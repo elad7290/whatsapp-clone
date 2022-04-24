@@ -4,13 +4,13 @@ import {useState} from "react";
 function PasswordInput(props) {
     const {errorMessage, icon, onChange, ...inputProps} = props;
     const [leaved, setLeave] = useState("false");
-    const handleLeave = (e) => {
+    const handleLeave = () => {
         setLeave("true")
     };
-    const hideShow = (e) => {
-        var pwd = document.getElementById(props.id);
-        var s = document.getElementById("show-" + props.id);
-        var h = document.getElementById("hide-" + props.id);
+    const hideShow = () => {
+        let pwd = document.getElementById(props.id);
+        let s = document.getElementById("show-" + props.id);
+        let h = document.getElementById("hide-" + props.id);
         if (pwd.type === "password") {
             pwd.type = "text";
             s.style.display = "block";

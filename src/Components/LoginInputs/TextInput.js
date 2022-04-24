@@ -5,7 +5,7 @@ function TextInput(props) {
     const {errorMessage, icon, onChange, ...inputProps} = props;
 
     const [leaved, setLeave] = useState("false");
-    const handleLeave = (e) => {
+    const handleLeave = () => {
         setLeave("true")
     };
 

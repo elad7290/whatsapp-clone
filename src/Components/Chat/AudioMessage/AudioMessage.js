@@ -1,9 +1,8 @@
-import AddNewMessage from "../../../../Server/UserChats/AddNewMessage";
-import GetMessages from "../../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
+import GetMessages from "../../../Server/UserChats/GetMessages";
 import "./AudioMessage.css";
 function AudioMessage(props) {
     const {sender, receiver, setMessages,user} = props;
-    ////////////////////
     let items = [];
     let recorder;
     const handleClick=()=>{
@@ -17,7 +16,7 @@ function AudioMessage(props) {
                     items.push(e.data);
                     if (recorder.state === 'inactive'){
                         let blob = new Blob(items,{type: 'audio/webm'});
-                        var reader = new FileReader();
+                        let reader = new FileReader();
                         reader.addEventListener("load", function() {
                             // build msg
                             const msg={
@@ -37,7 +36,6 @@ function AudioMessage(props) {
                 recorder.start();
                 stop.style.display="block";
                 start.style.display="none";
-                //audio.setAttribute("className","fa fa-circle-stop icon_footer clickable");
             }
 
         })
@@ -46,46 +44,16 @@ function AudioMessage(props) {
                 recorder.stop();
                 stop.style.display="none";
                 start.style.display="block";
-                //audio.setAttribute("className","fa fa-microphone icon_footer clickable");
             }
             else{
                 items=[];
                 recorder.start();
                 stop.style.display="block";
                 start.style.display="none";
-                //audio.setAttribute("className","fa fa-circle-stop icon_footer clickable");
 
             }
         }
     }
-    ///////////////////
-    /*
-    device.then(stream => {
-        recorder = new MediaRecorder(stream);
-        recorder.ondataavailable = e => {
-            items.push(e.data);
-            if (recorder.state === 'inactive'){
-                let blob = new Blob(items,{type: 'audio/webm'});
-                var reader = new FileReader();
-                reader.addEventListener("load", function() {
-                    // build msg
-                    const msg={
-                        sender: sender,
-                        receiver: receiver,
-                        content: reader.result,
-                        type: "audio",
-                        time: new Date().toLocaleString()
-                    };
-                    // send msg
-                    AddNewMessage(msg);
-                    setMessages([...GetMessages(user, receiver)]);
-                }, false);
-                reader.readAsDataURL(blob);
-            }
-        }
-    });
-
-     */
     return(
         <div>
             <span className="audio" onClick={handleClick}>

@@ -30,9 +30,9 @@ function RegisterForm(){
     };
 
     const handleChangeImage = (e) => {
-        var file = e.target.files[0];
+        let file = e.target.files[0];
         if (file.type.match("image.*")){
-            var reader = new FileReader();
+            let reader = new FileReader();
             reader.addEventListener("load", function() {
                 setValues({...values, [e.target.name]: reader.result});
                 console.log(values);

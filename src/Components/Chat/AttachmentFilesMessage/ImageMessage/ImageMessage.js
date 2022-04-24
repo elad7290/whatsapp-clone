@@ -1,14 +1,14 @@
 import "./ImageMessage.css"
-import AddNewMessage from "../../../../../Server/UserChats/AddNewMessage";
-import GetMessages from "../../../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../../Server/UserChats/AddNewMessage";
+import GetMessages from "../../../../Server/UserChats/GetMessages";
 
 function ImageMessage(props){
     const {sender, receiver, setMessages,user} = props;
 
     const sendImage = (e) => {
-       var file = e.target.files[0];
+       let file = e.target.files[0];
        if (file.type.match("image.*")){
-           var reader = new FileReader();
+           let reader = new FileReader();
            reader.addEventListener("load", function() {
                // build msg
                const msg={

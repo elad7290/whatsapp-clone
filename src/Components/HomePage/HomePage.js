@@ -2,8 +2,8 @@ import "./HomePage.css"
 import {useContext} from "react";
 import {UserContext} from "../../UserContext";
 import {Route, Routes, Navigate} from "react-router-dom";
-import Sidebar from "./Sidebar/Sidebar";
-import Chat from "./Chat/Chat";
+import Sidebar from "../Sidebar/Sidebar";
+import Chat from "../Chat/Chat";
 
 function HomePage() {
     const {user, setUser} = useContext(UserContext);

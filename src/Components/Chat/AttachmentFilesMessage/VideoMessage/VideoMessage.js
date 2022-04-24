@@ -1,5 +1,5 @@
-import AddNewMessage from "../../../../../Server/UserChats/AddNewMessage";
-import GetMessages from "../../../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../../Server/UserChats/AddNewMessage";
+import GetMessages from "../../../../Server/UserChats/GetMessages";
 import "./VideoMessage.css"
 
 

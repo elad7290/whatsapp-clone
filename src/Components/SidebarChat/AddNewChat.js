@@ -1,9 +1,9 @@
 import "./SidebarChat.css"
 import {useRef, useState} from "react";
-import GetAllUsersName from "../../../Server/GetAllUsersName";
-import Alert from "../../Alert/Alert";
-import CreateChat from "../../../Server/UserChats/CreateChat";
-import GetSidebar from "../../../Server/UserChats/GetSidebar";
+import GetAllUsersName from "../../Server/GetAllUsersName";
+import Alert from "../Alert/Alert";
+import CreateChat from "../../Server/UserChats/CreateChat";
+import GetSidebar from "../../Server/UserChats/GetSidebar";
 
 function AddNewChat(props) {
     const {user,setChats}=props;
