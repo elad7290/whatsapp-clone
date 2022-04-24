@@ -15,6 +15,15 @@ function Message(props) {
     {
         msg= <img src={message.content} className="img-fluid" alt="image..."/>;
     }
+    else if(message.type==="video")
+    {
+       msg= <video width="640" height="360" controls>
+            <source src={message.content} type="video/mp4" />
+            <source src={message.content} type="video/ogg" />
+            <source src={message.content} type="video/webm" />
+        </video>
+
+    }
 
     if (sender){
         return(

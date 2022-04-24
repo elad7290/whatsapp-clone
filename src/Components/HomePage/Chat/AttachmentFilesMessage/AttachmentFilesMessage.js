@@ -1,4 +1,5 @@
 import ImageMessage from "./ImageMessage/ImageMessage";
+import VideoMessage from "./VideoMessage/VideoMessage";
 
 function AttachmentFilesMessage(props){
     const {sender, receiver, setMessages,user} = props;
@@ -11,6 +12,9 @@ function AttachmentFilesMessage(props){
         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li className="dropdown-item">
                 <ImageMessage sender={sender} receiver={receiver} setMessages={setMessages} user={user}/>
+            </li>
+            <li className="dropdown-item">
+                <VideoMessage sender={sender} receiver={receiver} setMessages={setMessages} user={user}/>
             </li>
         </ul>
     </div>

@@ -20,11 +20,15 @@ function SidebarChat(props){
         }
         else if(messages[messages.length-1].type==="audio")
         {
-            msg="audio";
+            msg="audio file";
         }
         else if(messages[messages.length-1].type==="image")
         {
-            msg="image";
+            msg="image file";
+        }
+        else if(messages[messages.length-1].type==="video")
+        {
+            msg="video file";
         }
     }
 
