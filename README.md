@@ -1,10 +1,12 @@
-# Installations required
+# Whatsapp Project By Elad & Chen
+
+## Installations required
 
 * node.js
 * npm
 * react-router-dom
 
-## Available Scripts
+## How to run our project?
 
 In the project directory, you need to run:
 
