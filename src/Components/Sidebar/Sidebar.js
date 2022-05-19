@@ -10,16 +10,16 @@ function Sidebar() {
     const {token, setToken} = useContext(TokenContext);
     const [chats,setChats]=useState([]);
     const [userId,setUserId]=useState('');
-    const searchBox = useRef(null);
+    const searchBox = useRef('');
 
     const loadChat = async () => {
         const allChats = await GetChats(token);
-        setChats(allChats.filter((chat)=> (chat.name.includes(searchBox.current.value))));
+        setChats(allChats.filter((chat)=> (chat.name.toUpperCase().includes(searchBox.current.value.toUpperCase()))));
     }
 
     const delInput = async () => {
         const input = document.getElementById("search_chats");
-        input.value = null;
+        input.value = '';
         await loadChat();
     }
 

@@ -18,7 +18,7 @@ async function GetChats(token) {
 
 async function AddChat(token, id, name, server) {
     try {
-       await fetch('https://' + localServer + '/api/contacts', {
+        await fetch('https://' + localServer + '/api/contacts', {
             method: 'POST',
             headers: {
                 'accept': '*!/!*',
@@ -75,12 +75,12 @@ async function EditChat(token, chatId, name, server) {
 async function DeleteChat(token, chatId){
     try {
         await fetch('https://' + localServer + '/api/contacts/' + chatId, {
-                method: 'DELETE',
-                headers: {
-                    'accept': '*/*',
-                    'Authorization': 'Bearer ' + token
-                }
-            });
+            method: 'DELETE',
+            headers: {
+                'accept': '*/*',
+                'Authorization': 'Bearer ' + token
+            }
+        });
     } catch (error) {
         console.log(error);
     }
@@ -89,17 +89,17 @@ async function DeleteChat(token, chatId){
 async function Invite(otherServer, fromId, toId, server) {
     try {
         await fetch('https://' + otherServer + '/api/invitations', {
-                method: 'POST',
-                headers: {
-                    'accept': '*/*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'from': fromId,         // our id
-                    'to': toId,             // to who (id)
-                    'server': server        // 'server': server    // our server
-                })
-            });
+            method: 'POST',
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'from': fromId,         // our id
+                'to': toId,             // to who (id)
+                'server': localServer        // 'server': server    // our server
+            })
+        });
     } catch (error) {
         console.log(error);
     }

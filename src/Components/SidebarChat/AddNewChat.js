@@ -36,6 +36,7 @@ function AddNewChat(props) {
                                 <div className="form-group">
                                     <label htmlFor="username">User Name</label>
                                     <input ref={username} type="text" className="form-control" id="username" placeholder="User Name"/>
+                                    <small id="emailHelp" className="form-text text-muted">Notice! The User Name must be typed accurately.</small>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="nickname">Nickname</label>
@@ -44,7 +45,7 @@ function AddNewChat(props) {
                                 <div className="form-group">
                                     <label htmlFor="server_address">Server address</label>
                                     <input ref={server} type="text" className="form-control" id="server_address" placeholder="Enter server address"/>
-                                    <small id="emailHelp" className="form-text text-muted">Example: localhost:7079</small>
+                                    <small id="emailHelp" className="form-text text-muted">Example: localhost:7097</small>
                                 </div>
                             </form>
                         </div>
