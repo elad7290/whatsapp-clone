@@ -1,47 +1,27 @@
 import "./SidebarChat.css"
-import {useRef, useState} from "react";
-import GetAllUsersName from "../../Server/GetAllUsersName";
-import Alert from "../Alert/Alert";
-import CreateChat from "../../Server/UserChats/CreateChat";
-import GetSidebar from "../../Server/UserChats/GetSidebar";
+import {useContext, useRef} from "react";
+import {AddChat, Invite} from "../../Server/ChatRequests";
+import {TokenContext} from "../../TokenContext";
 
 function AddNewChat(props) {
-    const {user,setChats}=props;
-    const allUsers = GetAllUsersName();
-    const [searchQuery, setSearchQuery] = useState(allUsers);
-    const searchBox = useRef(null);
+    const {userId} = props;
+    const {token} = useContext(TokenContext);
+    const username = useRef('');
+    const nickname = useRef('');
+    const server = useRef('');
 
-    const search = () => {
-        setSearchQuery(allUsers.filter((user)=> (user.includes(searchBox.current.value))));
-    }
-
-    const choose = (e) => {
-        const input = document.getElementById("add_user_input");
-        input.value = e.target.innerText;
-    }
-
-    const createChat = () => {
-        const input = document.getElementById("add_user_input");
-        if (allUsers.includes(input.value)){
-            CreateChat(user,input.value);
-            setChats([...GetSidebar(user)]);
-        } else {
-            Alert("user doesn't exist!","danger");
-        }
-        input.value = null; // don't reload on fail
-        search();
-    }
-
-    const cancel = () => {
-        const input = document.getElementById("add_user_input");
-        input.value = null;
-        search();
+    const handleAdd = async () => {
+        await AddChat(token, username.current.value, nickname.current.value, server.current.value);
+        await Invite(server.current.value, userId, username.current.value, "localhost:7097");
+        username.current.value = '';
+        nickname.current.value = '';
+        server.current.value = '';
     }
 
     return (
         <>
             <div className="sidebar_chat" data-bs-toggle="modal" data-bs-target="#addNewChatModal">
-                <div id="alert"/>
+                {/*<div id="alert"/>*/}
                 <h4>Add New Chat</h4>
             </div>
             <div className="modal fade" id="addNewChatModal" tabIndex="-1" aria-labelledby="modalLabel"
@@ -52,16 +32,24 @@ function AddNewChat(props) {
                             <h5 className="modal-title" id="modalLabel">Add New Chat</h5>
                         </div>
                         <div className="modal-body">
-                            <div className="dropdown">
-                                <input type="text" id="add_user_input" placeholder="search for available users..." data-bs-toggle="dropdown" onKeyUp={search} ref={searchBox} autoComplete="off"/>
-                                <div className="dropdown-menu" aria-labelledby="add_user_input">
-                                    {searchQuery.map((user, key) => (<li key={key} onClick={choose} className="dropdown-item">{user}</li>))}
+                            <form>
+                                <div className="form-group">
+                                    <label htmlFor="username">User Name</label>
+                                    <input ref={username} type="text" className="form-control" id="username" placeholder="User Name"/>
                                 </div>
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="nickname">Nickname</label>
+                                    <input ref={nickname} type="text" className="form-control" id="nickname" placeholder="Nickname"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="server_address">Server address</label>
+                                    <input ref={server} type="text" className="form-control" id="server_address" placeholder="Enter server address"/>
+                                    <small id="emailHelp" className="form-text text-muted">Example: localhost:7079</small>
+                                </div>
+                            </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={cancel}>Close</button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={createChat}>Add</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleAdd} >Add</button>
                         </div>
                     </div>
                 </div>

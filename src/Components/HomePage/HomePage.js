@@ -1,16 +1,16 @@
 import "./HomePage.css"
 import {useContext} from "react";
-import {UserContext} from "../../UserContext";
+import {TokenContext} from "../../TokenContext";
 import {Route, Routes, Navigate} from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Chat from "../Chat/Chat";
 
 function HomePage() {
-    const {user, setUser} = useContext(UserContext);
-    if (!user) { // check if user not logged in
+    const {token} = useContext(TokenContext);
+    if (!token) { // check if user not logged in
         return <Navigate to="/login"/>;
     }
-   return (
+    return (
         <div className="app">
             <div className="app_body">
                 <Sidebar/>

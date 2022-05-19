@@ -4,11 +4,8 @@ import PasswordInput from "../LoginInputs/PasswordInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import ImageInput from "../LoginInputs/ImageInput";
 import {Link, Navigate} from "react-router-dom";
-import {useContext, useState} from "react";
-import {UserContext} from "../../UserContext";
-import AddUser from "../../Server/AddUser";
-import IsUsernameExist from "../../Server/IsUsernameExist";
-import Alert from "../Alert/Alert";
+import {useState} from "react";
+import {Register} from "../../Server/UserRequests";
 
 function RegisterForm(){
     const [values, setValues] = useState({
@@ -19,9 +16,9 @@ function RegisterForm(){
         image: "",
     });
 
-    const {user,setUser}=useContext(UserContext);
-    if (user) { // check if user already logged in
-        return <Navigate to="/homepage"/>;
+    const [user,setUser]=useState(null);
+    if (user) { // check if user already registered
+        return <Navigate to="/login"/>;
     }
 
 
@@ -35,7 +32,6 @@ function RegisterForm(){
             let reader = new FileReader();
             reader.addEventListener("load", function() {
                 setValues({...values, [e.target.name]: reader.result});
-                console.log(values);
             }, false);
             if (file){
                 reader.readAsDataURL(file);
@@ -43,17 +39,10 @@ function RegisterForm(){
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(IsUsernameExist(values.username)){
-            Alert("this Username is already taken","danger");
-        }
-        else {
-            AddUser(values);
-            setUser(values);
-        }
-
-    };
+        await Register(values, setUser);
+    }
 
     return(
         <div className='form-box' id="register">

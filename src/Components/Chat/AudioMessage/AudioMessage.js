@@ -1,5 +1,5 @@
-import AddNewMessage from "../../../Server/UserChats/AddNewMessage";
-import GetMessages from "../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../ServerBefore/UserChats/AddNewMessage";
+import GetMessages from "../../../ServerBefore/UserChats/GetMessages";
 import "./AudioMessage.css";
 function AudioMessage(props) {
     const {sender, receiver, setMessages,user} = props;

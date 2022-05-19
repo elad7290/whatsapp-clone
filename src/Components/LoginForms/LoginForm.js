@@ -3,28 +3,22 @@ import TextInput from "../LoginInputs/TextInput";
 import PasswordInput from "../LoginInputs/PasswordInput";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import {Link, Navigate} from "react-router-dom";
-import UserEntrance from "../../Server/UserEntrance";
-import Alert from "../Alert/Alert";
 import {useContext} from "react";
-import {UserContext} from "../../UserContext";
+import {TokenContext} from "../../TokenContext";
+import {Login} from "../../Server/UserRequests";
 
 function LoginForm() {
-    const {user,setUser} = useContext(UserContext);
-    if (user) { // check if user already logged in
+    const {token,setToken} = useContext(TokenContext);
+
+    if (token) { // check if user already logged in
         return <Navigate to="/homepage"/>;
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value;
         const pwd = document.getElementById('password').value;
-        const guest = UserEntrance(pwd, username);
-        if (guest){
-            setUser(guest);
-            //return <Navigate to="/HomePage"/>;
-        } else {
-            Alert("User Name or Password incorrect!", "danger");
-        }
+        await Login(username,pwd,setToken);
     };
 
     return (

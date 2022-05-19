@@ -1,6 +1,6 @@
 import "./ImageMessage.css"
-import AddNewMessage from "../../../../Server/UserChats/AddNewMessage";
-import GetMessages from "../../../../Server/UserChats/GetMessages";
+import AddNewMessage from "../../../../ServerBefore/UserChats/AddNewMessage";
+import GetMessages from "../../../../ServerBefore/UserChats/GetMessages";
 
 function ImageMessage(props){
     const {sender, receiver, setMessages,user} = props;

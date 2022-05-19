@@ -1,7 +1,9 @@
 import "./Message.css"
+
 function Message(props) {
-    const {sender,message} = props;
-    let msg;
+    const {message} = props;
+
+    /*let msg;
     if(message.type==="text"){
         msg=message.content;
     }
@@ -22,25 +24,24 @@ function Message(props) {
             <source src={message.content} type="video/ogg" />
             <source src={message.content} type="video/webm" />
         </video>
+    }*/
 
-    }
-
-    if (sender){
-        return(
+    if (message?.sent) {
+        return (
             <p className={"chat_message sender"}>
-                {msg}
+                {message?.content}
                 <span className="time_stamp ">
-                {message.time}
-            </span>
+                    {message?.created}
+                </span>
             </p>
         );
     } else {
-        return(
+        return (
             <p className={"chat_message"}>
-                {msg}
+                {message?.content}
                 <span className="time_stamp ">
-                {message.time}
-            </span>
+                    {message?.created}
+                </span>
             </p>
         );
     }

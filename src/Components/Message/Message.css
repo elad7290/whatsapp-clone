@@ -6,6 +6,7 @@
     width: fit-content;
     background-color: white;
     margin-bottom: 8px;
+    word-break: break-word;
 }
 
 .time_stamp {
@@ -16,7 +17,6 @@
 .sender{
     margin-left: auto;
     background-color: #dcf8c6;
-    word-break: break-word;
 }
 .img-fluid{
     max-width: 333px;

@@ -3,24 +3,25 @@ import LoginForm from './Components/LoginForms/LoginForm';
 import RegisterForm from "./Components/LoginForms/RegisterForm";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import HomePage from "./Components/HomePage/HomePage";
-import {UserContext} from "./UserContext"
+import {TokenContext} from "./TokenContext"
 import {useState} from "react";
-import UserEntrance from "./Server/UserEntrance";
+import Test from "./Components/Test/Test";
 
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <TokenContext.Provider value={{token, setToken}}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginForm/>}/>
                     <Route path="/login" element={<LoginForm/>}/>
                     <Route path="/register" element={<RegisterForm/>}/>
                     <Route path="/homepage/*" element={<HomePage/>}/>
+                    <Route path="/test" element={<Test/>}/>
                 </Routes>
             </BrowserRouter>
-        </UserContext.Provider>
+        </TokenContext.Provider>
     );
 }
 
