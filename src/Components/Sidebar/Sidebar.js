@@ -14,7 +14,7 @@ function Sidebar() {
 
     const loadChat = async () => {
         const allChats = await GetChats(token);
-        setChats(allChats.filter((chat)=> (chat.name.toUpperCase().includes(searchBox.current.value.toUpperCase()))));
+        setChats(allChats.filter((chat)=> chat?.name?.toUpperCase().includes(searchBox?.current?.value?.toUpperCase())));
     }
 
     const delInput = async () => {
@@ -35,7 +35,7 @@ function Sidebar() {
     }, []);
 
     const logout = () => {
-      setToken(null);
+      setToken('');
 
       /// logout function
     }

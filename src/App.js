@@ -9,7 +9,7 @@ import Test from "./Components/Test/Test";
 
 
 function App() {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState('');
     return (
         <TokenContext.Provider value={{token, setToken}}>
             <BrowserRouter>
