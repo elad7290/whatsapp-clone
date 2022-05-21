@@ -5,7 +5,7 @@ import {TokenContext} from "../../TokenContext";
 import {localServer} from "../../Shared";
 
 function AddNewChat(props) {
-    const {userId} = props;
+    const {userId, connection} = props;
     const {token} = useContext(TokenContext);
     const username = useRef('');
     const nickname = useRef('');
@@ -14,6 +14,7 @@ function AddNewChat(props) {
     const handleAdd = async () => {
         await AddChat(token, username.current.value, nickname.current.value, server.current.value);
         await Invite(server.current.value, userId, username.current.value, localServer);
+        await connection?.invoke("UpdateChats");
         username.current.value = '';
         nickname.current.value = '';
         server.current.value = '';

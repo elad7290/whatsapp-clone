@@ -5,12 +5,33 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {TokenContext} from "../../TokenContext";
 import {GetChats} from "../../Server/ChatRequests";
 import {GetLoggedUserId} from "../../Server/UserRequests";
+import {HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
+import {hubServer} from "../../Shared";
 
 function Sidebar() {
     const {token, setToken} = useContext(TokenContext);
     const [chats,setChats]=useState([]);
     const [userId,setUserId]=useState('');
     const searchBox = useRef('');
+    const [connection, setConnection] = useState(null);
+
+    useEffect(()=>{
+        const loadConnection = async () => {
+            try {
+                const connection = new HubConnectionBuilder()
+                    .withUrl(hubServer)
+                    .configureLogging(LogLevel.Information)
+                    .build();
+                await connection.on("LoadChats", async ()=>{ loadChat().catch(console.error); });
+                await connection.on("LoadMessages", async ()=>{ loadChat().catch(console.error); });
+                await connection.start();
+                setConnection(connection);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        loadConnection().catch(console.error);
+    }, []);
 
     const loadChat = async () => {
         const allChats = await GetChats(token);
@@ -25,7 +46,7 @@ function Sidebar() {
 
     useEffect(  () => {
         loadChat().catch(console.error);
-    });
+    }, []);
 
     useEffect(  () => {
         const GetUserId = async () => {
@@ -56,7 +77,7 @@ function Sidebar() {
                 </div>
             </div>
             <div className="sidebar_chats">
-                <AddNewChat userId={userId}/>
+                <AddNewChat userId={userId} connection={connection}/>
                 {chats.map((chat,key)=>(<SidebarChat key={key} chat={chat}/>))}
             </div>
         </div>
