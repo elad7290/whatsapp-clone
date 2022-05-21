@@ -17,6 +17,23 @@ function Chat() {
     const [messages, setMessages] = useState(null);
     const [input, setInput] = useState("");
     const [userId, setUserId] = useState('');
+    const [connection, setConnection] = useState(null);
+
+    useEffect(()=>{
+        const loadConnection = async () => {
+            try {
+                const connection = new HubConnectionBuilder()
+                    .withUrl(hubServer)
+                    .configureLogging(LogLevel.Information)
+                    .build();
+                await connection.start();
+                setConnection(connection);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        loadConnection().catch(console.error);
+    }, []);
 
 
     useEffect(() => {
@@ -36,6 +53,7 @@ function Chat() {
                 setMessages(data);
             }
             loadMessages().catch(console.error);
+            console.log("load messages");
         }
     });
 
@@ -54,22 +72,7 @@ function Chat() {
         e.preventDefault();
         await AddMessage(token, chatId, input);
         await Transfer(chat?.server, userId, chatId, input);
-
-        /************************/
-        console.log("try sending");
-        try {
-            const connection = new HubConnectionBuilder()
-                .withUrl("https://localhost:7097/chatHub")
-                .configureLogging(LogLevel.Information).build();
-
-            await connection.start();
-            await connection.invoke("UpdateMessages");
-        } catch (e) {
-            console.log(e);
-        }
-
-
-        /***************/
+        await connection?.invoke("UpdateMessages");
         setInput("");
     }
 

@@ -2,6 +2,7 @@ import "./SidebarChat.css"
 import {useContext, useRef} from "react";
 import {AddChat, Invite} from "../../Server/ChatRequests";
 import {TokenContext} from "../../TokenContext";
+import {localServer} from "../../Shared";
 
 function AddNewChat(props) {
     const {userId} = props;
@@ -12,7 +13,7 @@ function AddNewChat(props) {
 
     const handleAdd = async () => {
         await AddChat(token, username.current.value, nickname.current.value, server.current.value);
-        await Invite(server.current.value, userId, username.current.value, "localhost:7097");
+        await Invite(server.current.value, userId, username.current.value, localServer);
         username.current.value = '';
         nickname.current.value = '';
         server.current.value = '';

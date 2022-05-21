@@ -97,7 +97,7 @@ async function Invite(otherServer, fromId, toId, server) {
             body: JSON.stringify({
                 'from': fromId,         // our id
                 'to': toId,             // to who (id)
-                'server': localServer        // 'server': server    // our server
+                'server': server        // 'server': server    // our server
             })
         });
     } catch (error) {
