@@ -1,4 +1,4 @@
-import localServer from "./Shared";
+import {localServer} from "../Shared";
 
 async function GetMessages(token, chatId) {
     try {

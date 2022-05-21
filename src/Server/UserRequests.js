@@ -1,6 +1,6 @@
 import Alert from "../Components/Alert/Alert";
 import $ from "jquery";
-import localServer from "./Shared";
+import {localServer} from "../Shared";
 
 
 async function Login(username, password, setToken) {

@@ -55,18 +55,18 @@ function Test() {
        await AddMessage(token, 'elad', 'hi');
     }
 
-    const messageId = 0;
+    const messageId = 1;
     const getMessageById = async () => {
-        let data = await MessageDetails(token, 'elad', 0);
+        let data = await MessageDetails(token, 'elad', 1);
         console.log(data);
     }
 
     const editMessage = async () => {
-        await EditMessage(token, 'elad', 0, 'hello');
+        await EditMessage(token, 'elad', 1, 'hello');
     }
 
     const deleteMessage = async () => {
-       await DeleteMessage(token, 'elad', 0);
+       await DeleteMessage(token, 'elad', 1);
     }
 
     const otherServer = "localhost:7097";

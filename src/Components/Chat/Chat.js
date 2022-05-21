@@ -6,6 +6,9 @@ import {ChatDetails} from "../../Server/ChatRequests";
 import {AddMessage, GetMessages, Transfer} from "../../Server/MessageRequests";
 import Message from "../Message/Message";
 import {GetLoggedUserId} from "../../Server/UserRequests";
+import {hubServer} from "../../Shared";
+import * as signalR from "@microsoft/signalr";
+
 
 
 function Chat() {
@@ -15,6 +18,11 @@ function Chat() {
     const [messages, setMessages] = useState(null);
     const [input, setInput] = useState("");
     const [userId,setUserId]=useState('');
+
+    /**********signalR***********/
+
+    let connection =new signalR.HubConnectionBuilder().withUrl("chatsHub").build();
+    connection.start();
 
 
     useEffect(  () => {
@@ -52,6 +60,8 @@ function Chat() {
         e.preventDefault();
         await AddMessage(token,chatId,input);
         await Transfer(chat?.server, userId, chatId, input);
+        console.log("try sending");
+        await connection.invoke("UpdateMessages");
         setInput("");
     }
 
