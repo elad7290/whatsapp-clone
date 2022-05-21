@@ -26,6 +26,12 @@ function Chat() {
                     .withUrl(hubServer)
                     .configureLogging(LogLevel.Information)
                     .build();
+                await connection.on("LoadMessages", async ()=>{
+                    if (chatId) {
+                        let data = await GetMessages(token, chatId);
+                        setMessages(data);
+                    }
+                });
                 await connection.start();
                 setConnection(connection);
             } catch (e) {
@@ -53,9 +59,8 @@ function Chat() {
                 setMessages(data);
             }
             loadMessages().catch(console.error);
-            console.log("load messages");
         }
-    });
+    }, []);
 
     useEffect(() => {
         const GetUserId = async () => {
@@ -72,7 +77,7 @@ function Chat() {
         e.preventDefault();
         await AddMessage(token, chatId, input);
         await Transfer(chat?.server, userId, chatId, input);
-        await connection?.invoke("UpdateMessages");
+        await connection?.invoke("UpdateMessages", userId, chatId, input);
         setInput("");
     }
 
