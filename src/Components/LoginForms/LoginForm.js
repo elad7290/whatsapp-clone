@@ -6,6 +6,7 @@ import {Link, Navigate} from "react-router-dom";
 import {useContext} from "react";
 import {TokenContext} from "../../TokenContext";
 import {Login} from "../../Server/UserRequests";
+import {ratingServer} from "../../Shared";
 
 function LoginForm() {
     const {token,setToken} = useContext(TokenContext);
@@ -30,9 +31,12 @@ function LoginForm() {
                 <PasswordInput icon='fa fa-key' id='password' placeholder='Password' name='password' errorMessage="Password is required!" required/>
                 <SubmitButton text='LOGIN'/>
             </form>
-                <div id="message">
+                <div className="message">
                     Not registered? <Link to="/register">click here</Link> to register.
                 </div>
+            <div className="message">
+                Rate our app <a href={ratingServer}>here</a>.
+            </div>
         </div>
     );
 }
