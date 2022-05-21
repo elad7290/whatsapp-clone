@@ -7,26 +7,20 @@ import {AddMessage, GetMessages, Transfer} from "../../Server/MessageRequests";
 import Message from "../Message/Message";
 import {GetLoggedUserId} from "../../Server/UserRequests";
 import {hubServer} from "../../Shared";
-import * as signalR from "@microsoft/signalr";
-
+import {HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 
 
 function Chat() {
     const {token} = useContext(TokenContext);
-    const {chatId}=useParams();
+    const {chatId} = useParams();
     const [chat, setChat] = useState(null);
     const [messages, setMessages] = useState(null);
     const [input, setInput] = useState("");
-    const [userId,setUserId]=useState('');
-
-    /**********signalR***********/
-
-    let connection =new signalR.HubConnectionBuilder().withUrl("chatsHub").build();
-    connection.start();
+    const [userId, setUserId] = useState('');
 
 
-    useEffect(  () => {
-        if (chatId){
+    useEffect(() => {
+        if (chatId) {
             const loadChat = async () => {
                 let data = await ChatDetails(token, chatId);
                 setChat(data);
@@ -35,8 +29,8 @@ function Chat() {
         }
     }, [chatId]);
 
-    useEffect(  () => {
-        if (chatId){
+    useEffect(() => {
+        if (chatId) {
             const loadMessages = async () => {
                 let data = await GetMessages(token, chatId);
                 setMessages(data);
@@ -45,7 +39,7 @@ function Chat() {
         }
     });
 
-    useEffect(  () => {
+    useEffect(() => {
         const GetUserId = async () => {
             setUserId(await GetLoggedUserId(token));
         }
@@ -56,12 +50,26 @@ function Chat() {
         setInput(e.target.value);
     }
 
-    const sendMessage = async (e)=> {
+    const sendMessage = async (e) => {
         e.preventDefault();
-        await AddMessage(token,chatId,input);
+        await AddMessage(token, chatId, input);
         await Transfer(chat?.server, userId, chatId, input);
+
+        /************************/
         console.log("try sending");
-        await connection.invoke("UpdateMessages");
+        try {
+            const connection = new HubConnectionBuilder()
+                .withUrl("https://localhost:7097/chatHub")
+                .configureLogging(LogLevel.Information).build();
+
+            await connection.start();
+            await connection.invoke("UpdateMessages");
+        } catch (e) {
+            console.log(e);
+        }
+
+
+        /***************/
         setInput("");
     }
 
@@ -77,7 +85,7 @@ function Chat() {
                 </div>
             </div>
             <div className="chat_body">
-                {messages?.map((message,key)=> (<Message key={key} message={message}/>))}
+                {messages?.map((message, key) => (<Message key={key} message={message}/>))}
             </div>
             <div className="chat_footer">
                 <form>
@@ -93,4 +101,5 @@ function Chat() {
 
 
 }
+
 export default Chat;
