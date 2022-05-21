@@ -56,7 +56,7 @@ function RegisterForm(){
                 <ImageInput id='image' placeholder='Choose An Image' name='image' onChange={handleChangeImage} errorMessage="Image is required!" required/>
                 <SubmitButton text='REGISTER'/>
             </form>
-            <div id="message">
+            <div className="message">
                 Already registered? <Link to="/login">click here</Link> to login.
             </div>
         </div>
